@@ -68,6 +68,10 @@ h3{
     margin: 50px 5px 5px 20px;
     font-weight: bold;
 }
+.logout_button{
+    margin: 5px 5px 5px 20px;
+    font-weight: bold;
+}
 
 .select_number{
     margin-left: 20px;
@@ -128,10 +132,12 @@ table th, table td {
 #saikoro{
     margin-left: 20px;
 }
-/* #next{
+#index_reset{
     margin-left: 20px;
-} */
-
+}
+#index_next{
+    margin-left: 20px;
+}
 .post_number{
     display: none;
 }

@@ -1,20 +1,11 @@
 <?php
     session_start();
 
-    if($_SESSION['chk_ssid'] != session_id()){
-        exit('LOGIN ERROR');
-    }else{
-        session_regenerate_id(true);
-        $_SESSION['chk_ssid'] = session_id(); 
-    }
+    require_once('func.php');
+    initial_check();
 
+    $pdo = connect_db();
 
-    try {
-        //ID:'root', Password: 'root'
-        $pdo = new PDO('mysql:dbname=sugoroku;charset=utf8;host=localhost','root','root');
-    } catch (PDOException $e) {
-        exit('DBConnectError:'.$e->getMessage());
-    }
 
     //ゲームのボード取得
     $stmt = $pdo->prepare("SELECT * FROM boad_table");
@@ -104,7 +95,8 @@
                 <button id="next" type="submit">すごろくの行き先を見る</button>
             </form>
 
-            <button onclick="location.href='./index.php'" class="initial_button">はじめにもどる</button>
+            <button onclick="location.href='./index.php'" class="initial_button">はじめにもどる</button><br>
+            <button onclick="location.href='./logout.php'" class="logout_button">ログアウト</button>
         </div>
 
         <div class="right_main">

@@ -1,10 +1,6 @@
 <?php
-    try {
-        //ID:'root', Password: 'root'
-        $pdo = new PDO('mysql:dbname=sugoroku;charset=utf8;host=localhost','root','root');
-    } catch (PDOException $e) {
-        exit('DBConnectError:'.$e->getMessage());
-    }
+    require_once('func.php');
+    $pdo = connect_db();
 
     //ゲームのボード取得
     $stmt = $pdo->prepare("SELECT * FROM boad_table");
@@ -38,7 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/jquery-2.1.3.min.js"></script>
     
-    <title>Game</title>
+    <title>無限すごろく</title>
 
     <!-- <link rel="stylesheet" href="css/reset.css"> -->
     <link rel="stylesheet" href="css/style.css">
@@ -63,7 +59,7 @@
                 <input type="radio" name="dice" value="1" id="one" checked>
                     <label class ="post_number" for="one">1</label><br>
 
-                <button id="next" type="submit">1マス進む</button>
+                <button id="index_next" type="submit">1マス進む</button>
             </form>
 
             <form method="POST" action="next_sample.php">
@@ -74,7 +70,7 @@
                 <input type="radio" name="dice" value="1" id="one">
                     <label class ="post_number" for="one">1</label><br>
 
-                <button id="reset" type="submit">リセット</button>
+                <button id="index_reset" type="submit">リセット</button>
             </form>
 
 

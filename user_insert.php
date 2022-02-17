@@ -1,25 +1,15 @@
 <?php
     session_start();
 
-    if($_SESSION['chk_ssid'] != session_id()){
-        exit('LOGIN ERROR');
-    }else{
-        session_regenerate_id(true);
-        $_SESSION['chk_ssid'] = session_id(); 
-    }
-
+    require_once('func.php');
+    initial_check();
 
     //1. POSTデータ取得
     $name = $_POST['name'];
     //echo $name.'<br>';
 
     //2. DB接続します
-    try {
-        //ID:'root', Password: 'root'
-        $pdo = new PDO('mysql:dbname=sugoroku;charset=utf8;host=localhost','root','root');
-    } catch (PDOException $e) {
-        exit('DBConnectError:'.$e->getMessage());
-    }
+    $pdo = connect_db();
 
 
     $stmt = $pdo->prepare("SELECT * FROM boad_table");

@@ -7,12 +7,8 @@
     //echo $dice.'<br>';
 
     //2. DB接続します
-    try {
-        //ID:'root', Password: 'root'
-        $pdo = new PDO('mysql:dbname=sugoroku;charset=utf8;host=localhost','root','root');
-    } catch (PDOException $e) {
-        exit('DBConnectError:'.$e->getMessage());
-    }
+    require_once('func.php');
+    $pdo = connect_db();
 
     $position = $position + $dice;
     $goal = $goal - $dice;

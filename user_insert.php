@@ -1,4 +1,14 @@
 <?php
+    session_start();
+
+    if($_SESSION['chk_ssid'] != session_id()){
+        exit('LOGIN ERROR');
+    }else{
+        session_regenerate_id(true);
+        $_SESSION['chk_ssid'] = session_id(); 
+    }
+
+
     //1. POSTデータ取得
     $name = $_POST['name'];
     //echo $name.'<br>';

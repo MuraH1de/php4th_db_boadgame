@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    if($_SESSION['chk_ssid'] != session_id()){
+        exit('LOGIN ERROR');
+    }else{
+        session_regenerate_id(true);
+        $_SESSION['chk_ssid'] = session_id(); 
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

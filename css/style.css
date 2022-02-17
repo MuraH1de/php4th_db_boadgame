@@ -131,3 +131,15 @@ table th, table td {
 /* #next{
     margin-left: 20px;
 } */
+
+.post_number{
+    display: none;
+}
+
+input[type='radio']{
+    display: none;
+}
+
+input[type='text']{
+    display: none;
+}

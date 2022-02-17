@@ -1,4 +1,14 @@
 <?php
+    session_start();
+
+    if($_SESSION['chk_ssid'] != session_id()){
+        exit('LOGIN ERROR');
+    }else{
+        session_regenerate_id(true);
+        $_SESSION['chk_ssid'] = session_id(); 
+    }
+
+
     try {
         //ID:'root', Password: 'root'
         $pdo = new PDO('mysql:dbname=sugoroku;charset=utf8;host=localhost','root','root');

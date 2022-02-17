@@ -64,6 +64,9 @@ h3{
 .next_button{
     margin: 20px;
 }
+.game_button{
+    margin-left: 20px;
+}
 .initial_button{
     margin: 50px 5px 5px 20px;
     font-weight: bold;

@@ -6,7 +6,6 @@
 
     $pdo = connect_db();
 
-    
     $stmt = $pdo->prepare("SELECT * FROM boad_table");
     $status = $stmt->execute();
     $boad_all=0;
@@ -14,6 +13,11 @@
         $boad_all += 1;
     }
     //echo $boad_all;
+
+    
+    // echo $_SESSION['chk_ssid'].'<br>';
+    // echo $_SESSION['name'].'<br>';
+    // echo $_SESSION['kanri_flg'].'<br>';
 
 ?>
 
@@ -93,7 +97,34 @@
         </div>
 
         <!-- 画面遷移 -->
-        <button onclick="location.href='./number_select.php'" class="next_button">すごろく画面決定！</button>
+        <?php
+            //echo $_SESSION['kanri_flg'].'<br>';
+            $line = "";
+            if($_SESSION['kanri_flg'] == 1){
+                $line = "<button onclick=";
+                $line = $line.'"location.href=';
+                $line = $line."'./number_select.php'";
+                $line = $line.'" class="next_button">人数選択へ！</button><br>';
+                $line =  $line."<button onclick=";
+                $line = $line.'"location.href=';
+                $line = $line."'./game_index.php'";
+                $line = $line.'" class="game_button">ゲーム画面へ！</button>';
+                echo $line."<br>";
+
+                //echo "<button onclick="location.href='./number_select.php'" class="next_button">人数選択へ！</button><br>";
+                //echo "<button onclick="location.href='./game_index.php'" class="next_button">ゲーム画面へ！</button>";
+            }
+            elseif($_SESSION['kanri_flg'] == 0){
+                //echo "<button onclick="location.href='./number_select.php'" class="next_button">すごろく画面決定！</button>";
+                $line = "<button onclick=";
+                $line = $line.'"location.href=';
+                $line = $line."'./number_select.php'";
+                $line = $line.'" class="next_button">すごろく画面決定！</button>';
+                echo $line."<br>";
+            }
+        ?>
+
+        
 
     </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: localhost:3306
--- 生成日時: 2022-02-17 17:44:07
+-- 生成日時: 2022-02-24 20:05:52
 -- サーバのバージョン： 5.7.24
 -- PHP のバージョン: 8.0.1
 
@@ -40,34 +40,36 @@ CREATE TABLE `boad_table` (
 
 INSERT INTO `boad_table` (`id`, `bonus`, `stop_status`, `text`) VALUES
 (1, 0, 0, 'スタート'),
-(2, 5, 0, '5マスすすむ'),
-(3, 1, 0, '1マスすすむ'),
-(4, 0, 0, ''),
-(5, 0, 0, 'どうぶつのまねをする'),
-(6, 0, 1, '1かいやすみ'),
-(7, 0, 0, ''),
-(8, -7, 0, 'スタートにもどる'),
-(9, 3, 0, '特別ボーナス！3マスすすむ'),
-(10, -1, 0, '1マスもどる'),
-(11, 0, 0, ''),
-(12, 2, 0, '2マスすすむ'),
+(2, 0, 0, ''),
+(3, 0, 0, ''),
+(4, 5, 0, '5マスすすむ'),
+(5, 1, 0, '1マスすすむ'),
+(6, 0, 0, ''),
+(7, 0, 0, 'どうぶつのまねをする'),
+(8, 0, 1, '1かいやすみ'),
+(9, 0, 0, ''),
+(10, -7, 0, 'スタートにもどる'),
+(11, 3, 0, '特別ボーナス！3マスすすむ'),
+(12, -1, 0, '1マスもどる'),
 (13, 0, 0, ''),
-(14, 0, 0, 'へんがおをする'),
+(14, 2, 0, '2マスすすむ'),
 (15, 0, 0, ''),
-(16, 3, 0, '3マスすすむ'),
-(17, -3, 0, '3マスもどる'),
-(18, 0, 0, ''),
-(19, 0, 0, ''),
-(20, 4, 0, 'ワープ！4マスすすむ'),
+(16, 0, 0, 'へんがおをする'),
+(17, 0, 0, ''),
+(18, 3, 0, '3マスすすむ'),
+(19, -3, 0, '3マスもどる'),
+(20, 0, 0, ''),
 (21, 0, 0, ''),
-(22, 1, 0, '1マスすすむ'),
+(22, 4, 0, 'ワープ！4マスすすむ'),
 (23, 0, 0, ''),
-(24, 0, 0, 'すきなうたをうたおう'),
+(24, 1, 0, '1マスすすむ'),
 (25, 0, 0, ''),
-(26, 0, 1, '1かいやすみ'),
+(26, 0, 0, 'すきなうたをうたおう'),
 (27, 0, 0, ''),
-(28, -3, 0, '3マスもどる'),
-(29, 0, 0, 'ゴール！');
+(28, 0, 1, '1かいやすみ'),
+(29, 0, 0, ''),
+(30, -3, 0, '3マスもどる'),
+(31, 0, 0, 'ゴール！');
 
 -- --------------------------------------------------------
 
@@ -95,8 +97,8 @@ CREATE TABLE `id_table` (
   `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `uid` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `upw` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `kanri_flg` int(11) NOT NULL,
-  `lfe_flg` int(11) NOT NULL
+  `kanri_flg` int(11) NOT NULL DEFAULT '0',
+  `lfe_flg` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -106,7 +108,10 @@ CREATE TABLE `id_table` (
 INSERT INTO `id_table` (`id`, `name`, `uid`, `upw`, `kanri_flg`, `lfe_flg`) VALUES
 (1, '管理者', 'admin', 'admin', 1, 0),
 (2, 'テスト', 'test', 'test', 0, 0),
-(3, '村田英行', 'mura', 'mura', 1, 0);
+(3, '村田英行', 'mura', 'mura', 1, 0),
+(4, 'びー', 'bbbbb', 'bbbbb', 0, 0),
+(5, 'えー', 'aaaaa', 'aaaaa', 0, 0),
+(6, 'ccccc', 'ccccc', 'ccccc', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -127,7 +132,7 @@ CREATE TABLE `sample_table` (
 --
 
 INSERT INTO `sample_table` (`id`, `position`, `bonus`, `stop_status`, `goal`) VALUES
-(1, 1, 0, 0, 28);
+(1, 5, 0, 0, 28);
 
 -- --------------------------------------------------------
 
@@ -159,6 +164,14 @@ CREATE TABLE `user_table` (
   `stop_status` int(11) NOT NULL,
   `goal` int(11) NOT NULL DEFAULT '29'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- テーブルのデータのダンプ `user_table`
+--
+
+INSERT INTO `user_table` (`user_id`, `user_name`, `position`, `stop_status`, `goal`) VALUES
+(1, 'えー', 1, 0, 30),
+(2, 'びー', 1, 0, 30);
 
 --
 -- ダンプしたテーブルのインデックス
@@ -208,7 +221,7 @@ ALTER TABLE `game_table`
 -- テーブルの AUTO_INCREMENT `id_table`
 --
 ALTER TABLE `id_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- テーブルの AUTO_INCREMENT `sample_table`
@@ -220,7 +233,7 @@ ALTER TABLE `sample_table`
 -- テーブルの AUTO_INCREMENT `user_table`
 --
 ALTER TABLE `user_table`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

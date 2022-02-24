@@ -1,4 +1,7 @@
 <?php
+    //session_start();
+    require_once('func.php');
+    //initial_check();
 
     //1.対象のIDを取得
     $id = $_POST['number'];
@@ -9,12 +12,7 @@
     echo "GET->".$id."<br>";
 
     //2.DB接続します
-    try {
-        //ID:'root', Password: 'root'
-        $pdo = new PDO('mysql:dbname=sugoroku;charset=utf8;host=localhost','root','root');
-    } catch (PDOException $e) {
-        exit('DBConnectError:'.$e->getMessage());
-    }
+    $pdo = connect_db();
 
     //マス数確認
     $stmt = $pdo->prepare("SELECT * FROM boad_table");
@@ -53,7 +51,7 @@
     if ($status === false) {
         sql_error($stmt);
     } else {
-        header("Location: index.php");
+        header("Location: start.php");
         exit;
     }
 

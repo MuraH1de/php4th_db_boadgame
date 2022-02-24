@@ -1,6 +1,14 @@
 main{
     display: flex;
 }
+.slow_main{
+    animation: fadeIn 2s linear 0s 1 normal;
+}
+@keyframes fadeIn { /*animation-nameで設定した値を書く*/
+    0% {opacity: 0} /*アニメーション開始時は不透明度0%*/
+    100% {opacity: 1} /*アニメーション終了時は不透明度100%*/
+}
+
 
 
 .left_main{
@@ -140,15 +148,31 @@ table th, table td {
 }
 #index_next{
     margin-left: 20px;
+    margin-bottom: 20px;
 }
 .post_number{
     display: none;
 }
 
-input[type='radio']{
+/* input[type='radio']{
     display: none;
 }
 
 input[type='text']{
     display: none;
+} */
+.init_input{
+    display: none;
 }
+
+
+
+/* LOGIN画面 */
+
+
+/* LOGIN画面完了 */
+
+
+
+
+

@@ -1,8 +1,12 @@
 <?php
     session_start();
+    
+    // echo $_SESSION['chk_ssid'].'<br>';
+    // echo $_SESSION['name'].'<br>';
+    // echo $_SESSION['kanri_flg'].'<br>';
 
     require_once('func.php');
-    initial_check();
+    //initial_check();
 
     $pdo = connect_db();
 
@@ -14,10 +18,6 @@
     }
     //echo $boad_all;
 
-    
-    // echo $_SESSION['chk_ssid'].'<br>';
-    // echo $_SESSION['name'].'<br>';
-    // echo $_SESSION['kanri_flg'].'<br>';
 
 ?>
 

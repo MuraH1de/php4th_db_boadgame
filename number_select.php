@@ -3,6 +3,8 @@
 
     require_once('func.php');
     initial_check();
+    // echo $_SESSION['chk_ssid'].'<br>';
+    // echo session_id();
 
     $pdo = connect_db();
 

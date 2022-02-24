@@ -9,6 +9,7 @@
     while($boad_table[] = $stmt->fetch(PDO::FETCH_ASSOC)){
         $boad_all += 1;
     }
+
     //echo $boad_all;
     $goal = $boad_all - 1;
 
@@ -41,7 +42,7 @@
 </head>
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <main>
+    <main class="slow_main">
         <div class="left_main">
 
             <h1>無限すごろく</h1>
@@ -52,24 +53,26 @@
                         
 
             <form method="POST" action="next_sample.php">
-                <label><input type="text" name="goal" value="<?= $goal; ?>"></label><br>
-                <label><input type="text" name="position" value="<?= $position; ?>"></label><br>
-                <input type="radio" name="dice" value="0" id="zero">
-                    <label class ="post_number" for="zero">0</label>
-                <input type="radio" name="dice" value="1" id="one" checked>
-                    <label class ="post_number" for="one">1</label><br>
-
+                <div class="init_input">
+                    <label><input type="text" name="goal" value="<?= $goal; ?>"></label><br>
+                    <label><input type="text" name="position" value="<?= $position; ?>"></label><br>
+                    <input type="radio" name="dice" value="0" id="zero">
+                        <label class ="post_number" for="zero">0</label>
+                    <input type="radio" name="dice" value="1" id="one" checked>
+                        <label class ="post_number" for="one">1</label><br>
+                </div>
                 <button id="index_next" type="submit">1マス進む</button>
             </form>
 
             <form method="POST" action="next_sample.php">
-                <label><input type="text" name="goal" value="<?= $boad_all-1; ?>"></label><br>
-                <label><input type="text" name="position" value="1"></label><br>
-                <input type="radio" name="dice" value="0" id="zero" checked>
-                    <label class ="post_number" for="zero">0</label>
-                <input type="radio" name="dice" value="1" id="one">
-                    <label class ="post_number" for="one">1</label><br>
-
+                <div class="init_input">
+                    <label><input type="text" name="goal" value="<?= $boad_all-1; ?>"></label><br>
+                    <label><input type="text" name="position" value="1"></label><br>
+                    <input type="radio" name="dice" value="0" id="zero" checked>
+                        <label class ="post_number" for="zero">0</label>
+                    <input type="radio" name="dice" value="1" id="one">
+                        <label class ="post_number" for="one">1</label><br>
+                </div>
                 <button id="index_reset" type="submit">リセット</button>
             </form>
 

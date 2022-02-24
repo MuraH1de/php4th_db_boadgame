@@ -1,16 +1,14 @@
 <?php
+    //session_start();
+    require_once('func.php');
+    //initial_check();
 
-//1.対象のIDを取得
+    //1.対象のIDを取得
     $id = $_GET['number'];
     echo "GET->".$id."<br>";
 
     //2.DB接続します
-    try {
-        //ID:'root', Password: 'root'
-        $pdo = new PDO('mysql:dbname=sugoroku;charset=utf8;host=localhost','root','root');
-    } catch (PDOException $e) {
-        exit('DBConnectError:'.$e->getMessage());
-    }
+    $pdo = connect_db();
 
     //3.削除SQLを作成
     $stmt = $pdo->prepare('DELETE FROM boad_table WHERE id = :id');
@@ -43,7 +41,7 @@
     if ($status === false) {
         sql_error($stmt);
     } else {
-        header("Location: index.php");
+        header("Location: start.php");
         exit;
     }
 
